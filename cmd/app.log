@@ -6,3 +6,5 @@
 {"level":"info","msg":"loginByPwdReq:\u0026{jiaokang a@11111}","time":"2025-03-24T23:02:47+08:00"}
 {"level":"error","msg":"loginByPwd failed, err:Error 1054 (42S22): Unknown column 'username' in 'where clause'","time":"2025-03-24T23:02:47+08:00"}
 {"level":"error","msg":"loginByPwd failed, err:password is invalid","time":"2025-03-24T23:02:48+08:00"}
+{"level":"info","msg":"This log is written to a file","time":"2025-03-24T23:23:48+08:00"}
+{"level":"info","msg":"loginByPwdReq:\u0026{jk a@11111}","time":"2025-03-24T23:24:00+08:00"}
