@@ -36,7 +36,7 @@ func LoadConfig(filename string) (*Config, error) {
 	return &cfg, nil
 }
 
-var db *gorm.DB
+var DB *gorm.DB
 
 func InitDB(cfg *Config) {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
@@ -48,10 +48,10 @@ func InitDB(cfg *Config) {
 	)
 
 	var err error
-	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("inital database error, failed to connect database")
 	}
 	// 自动迁移表结构
-	db.AutoMigrate(&models.Users{}, &models.AuthMethods{}, &models.Pets{}, &models.VaccinationRecords{}, &models.Scheduleds{}, &models.DewormingRecords{})
+	DB.AutoMigrate(&models.Users{}, &models.AuthMethods{}, &models.Pets{}, &models.VaccinationRecords{}, &models.Scheduleds{}, &models.DewormingRecords{})
 }
