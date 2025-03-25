@@ -10,26 +10,24 @@ import (
 )
 
 func main() {
-	// 加载数据库配置文件
-	cfg, err := common.LoadConfig("E:/petHealthGo/config.yml")
+	// 加载配置文件
+	_, err := common.LoadConfig("config.yml")
 	if err != nil {
-		panic("faild to load config.yml file")
+		panic("Failed to load config: " + err.Error())
 	}
+	cfg := common.GetConfig()
+
+	// 初始化数据库
+	common.InitDB(cfg)
+	// 获取 Redis 客户端实例（单例模式）
+	redisClient := common.GetRedisClient(cfg.Redis.Host, cfg.Redis.Pass, cfg.Redis.Db)
+	defer redisClient.Close()
 
 	// 设置日志级别
 	logrus.SetLevel(logrus.DebugLevel)
 	// 设置日志输出格式为 JSON
 	logrus.SetFormatter(&logrus.JSONFormatter{})
-	// 将日志输出到文件
-	file, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
-	if err != nil {
-		logrus.Fatal("Failed to open log file:", err)
-	}
-	defer file.Close()
-	logrus.SetOutput(file)
-	logrus.Info("This log is written to a file")
-
-	common.InitDB(cfg)
+	logrus.SetOutput(os.Stdout)
 
 	router := gin.Default()
 

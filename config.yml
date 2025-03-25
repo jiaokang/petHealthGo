@@ -4,3 +4,14 @@ database:
   host: 127.0.0.1
   port: 3306
   name: petHealthTool
+
+mail:
+  host: smtp.qq.com
+  port: 465
+  user: 811708046@qq.com
+  pass: 1
+
+redis:
+  host: localhost:6379
+  pass: a@111111
+  db: 2

@@ -9,7 +9,6 @@ import (
 // 用户信息
 type Users struct {
 	gorm.Model
-	Name     string `gorm:"size:50;not null;comment:用户名"`
 	NickName string `gorm:"size:64;comment:昵称"`
 	Phone    string `gorm:"size:20;uniqueIndex;comment:主人手机号"`
 	Email    string `gorm:"size:100;uniqueIndex;comment:主人邮箱"`

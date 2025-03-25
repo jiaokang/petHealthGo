@@ -1,7 +1,13 @@
 package common
 
-// 注册参数
+// 密码
 type LoginByPwdReq struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
+	EmailOrPhone string `json:"emailOrPhone"`
+	Password     string `json:"password"`
+}
+
+// 邮箱登录参数
+type LoginByEmailReq struct {
+	Email      string `json:"email"`
+	VerifyCode string `json:"verifyCode"`
 }
